@@ -1,16 +1,7 @@
-from genutils import CodeGenerator, KeywordsStoppingCriteria, LineBeginStoppingCriteria, ReplitStoppingCriteria
+from genutils import CodeGenerator, KeywordsStoppingCriteria, LineBeginStoppingCriteria 
 from typing import List
 import logging
 import torch
-
-from decicoder import DeciCoderProxy
-from codeparrot import CodeParrotProxy
-from wizardcoder import WizardCoder3BProxy, WizardCoder16BProxy
-from codet5 import CodeT5LargeNTPPyProxy, CodeGen6BMonoProxy, CodeT5P16BProxy, CodeGen25Mono7BProxy
-from incoder import Incoder1BProxy, Incoder6BFloat16Proxy, Incoder6BProxy
-from codegeex import CodeGeeXProxy
-from codellama import CodeLLaMaProxy
-
 
 from transformers import AutoModelForCausalLM, AutoConfig, AutoTokenizer, StoppingCriteriaList
 
@@ -58,6 +49,6 @@ class SantaCoderProxy(CodeGenerator):
 
         offset = len(inputs.flatten())
 
-        outputs = self.model.generate(inputs, max_length=self.max_length, stopping_criteria=self.stopping_criteria, pad_token_id=self.tokenizer.eos_token_id)
+        outputs = self.model.generate(inputs, padding_side='left', do_sample=True, temperature=0.5, max_length=self.max_length, stopping_criteria=self.stopping_criteria, pad_token_id=self.tokenizer.eos_token_id)
 
         return str(self.tokenizer.decode(outputs.flatten()[offset:-1]))

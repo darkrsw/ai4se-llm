@@ -1,0 +1,15 @@
+fire==0.4.0
+openai==0.14.0
+PyYAML==6.0
+tiktoken==0.3.1
+requests==2.31
+tqdm==4.66.1
+tokenizers==0.13.3
+transformers==4.31.0
+torch==2.0.1
+GitPython==3.1.32
+accelerate==0.21.0
+einops==0.6.1
+sentencepiece==0.1.99
+huggingface-hub==0.16.4
+
