@@ -1,0 +1,8 @@
+OUTPUT_ROOT: /root/output
+REPO_ROOT: /root/git
+MODEL_CACHE_PATH: /root/cache
+
+device_memory_map:
+  0: "23GiB"
+  1: "23GiB"
+  "cpu": "30GiB"
